@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<xs:schema
+	xmlns:tns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	
+	 
+	<!-- 
+	https://www.w3school.com.cn/schema/index.asp
+	
+    schema 是根元素  
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"                     
+       指明了在schema中使用的元素和数据种类来自http://www.w3.org/2001/XMLSchema名称空间（namespace）。  
+       它也指定了来自"http://www.w3.org/2001/XMLSchema"名称空间（namespace）的元素和数据种类必须带前缀“xs:”    
+    
+   targetNamespace="http://www.zhong.cn"(将全部元素绑定给这个名称空间)  
+       暗示了由这份schema(shiporder, orderperson, shipto, ....)定义的元素来自"http://www.zhong.com"名称空间  
+      
+   xmlns="http://www.w3schools.com"   
+     指明了默认名称空间（namespace）是http://www.w3schools.com.   
+      
+    elementFormDefault="qualified" （“unqualified”）将根节点绑定到名称空间  
+        将所有元素绑定到名称空间  
+  --> 
+  
+  
+	<xs:element name="class" type="class_p" />
+	
+	<xs:complexType name="class_p">
+		<xs:sequence>
+			<xs:element name="student" type="student_p" maxOccurs="unbounded"/>
+			<xs:element name="teacher" type="teacher_p"/>
+		</xs:sequence>
+		<xs:attribute name="classroom" type="string"/>
+		<xs:attribute name="id" type="ID"/>
+	</xs:complexType>
+	
+	<xs:complexType name="student_p" >
+			<xs:sequence>
+				<xs:element name="name" type="string"/>
+				<xs:element name="age">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:maxInclusive value="120"/>
+							<xs:minExclusive value="0"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="comment" type="string"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="student_attr"/>
+		</xs:complexType>
+		
+		<xs:complexType name="teacher_p">
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="teacher_attr"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+		
+		<xs:attributeGroup name="student_attr">
+			<xs:attribute name="addr" type="string"/>
+			<xs:attribute name="lesson" type="string" fixed="面授"/>
+			<xs:attribute name="studentID" type="ID"/>
+			<xs:attribute name="classID" type="IDREF"/>
+			<xs:attribute name="friend" type="IDREFS"/>
+			<xs:attribute name="sex" type="string"/>
+		</xs:attributeGroup>
+		
+		<xs:attributeGroup name="teacher_attr">
+			<xs:attribute name="age" type="int"/>
+			<xs:attribute name="sex" type="string"/>
+		</xs:attributeGroup>
+</xs:schema>

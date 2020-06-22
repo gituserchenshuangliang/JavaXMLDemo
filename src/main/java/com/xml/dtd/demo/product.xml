@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "product.dtd">
+<catalog>
+	<product name="C'estbon" category="Shop-Professional" inventory="Backordered" partnum="10" plant="Chicago">
+		<specifications power="0" weight="555ml">specifications</specifications>
+		<options>options</options>
+		<price>2</price>
+		<notes>&author;</notes>
+	</product>
+</catalog>

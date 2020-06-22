@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 2020-5-12 -->
+<!-- 引入DTD -->
+<!DOCTYPE class SYSTEM "class.dtd" [<!ENTITY writer "Switch">]>
+<class id="C1" classroom="1班">
+<student addr="杭州" studentID="n1" sex="男" classID="C1" lesson="面授" friend="n2">
+<name>张三</name>
+<age>20</age>
+<comment>信号</comment>
+</student>
+<student addr="武汉" studentID="n2" sex="男" classID="C1" lesson="面授" friend="n1 n3">
+<name>李四</name>
+<age>30</age>
+<comment>手机</comment>
+</student>
+<student addr="武汉" studentID="n3" sex="女" classID="C1" lesson="面授" friend="n1">
+<name>王菲</name>
+<age>30</age>
+<comment>%G</comment>
+</student>
+<teacher>&writer;</teacher>
+</class>

@@ -1,0 +1,33 @@
+<!ENTITY author "John Doe">
+<!ENTITY company "JD Power Tools, Inc.">
+<!ENTITY email "jd@jd-tools.com">
+
+<!ELEMENT catalog (product+)>
+
+<!ELEMENT product (specifications+,options?,price+,notes?)>
+<!ATTLIST product
+	name CDATA #IMPLIED
+	category (HandTool|Table|Shop-Professional) "HandTool"
+	partnum CDATA #IMPLIED
+	plant (Pittsburgh|Milwaukee|Chicago) "Chicago"
+	inventory (InStock|Backordered|Discontinued) "InStock">
+
+<!ELEMENT specifications (#PCDATA)>
+<!ATTLIST specifications
+	weight CDATA #IMPLIED
+	power CDATA #IMPLIED>
+
+<!ELEMENT options (#PCDATA)>
+<!ATTLIST options
+	finish (Metal|Polished|Matte) "Matte" 
+	adapter (Included|Optional|NotApplicable) "Included"
+	case (HardShell|Soft|NotApplicable) "HardShell">
+
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST price
+	msrp CDATA #IMPLIED
+	wholesale CDATA #IMPLIED
+	street CDATA #IMPLIED
+	shipping CDATA #IMPLIED>
+
+<!ELEMENT notes (#PCDATA)>

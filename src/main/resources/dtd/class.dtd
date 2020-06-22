@@ -1,0 +1,151 @@
+<!-- 
+文档类型定义(Document Type Definition)，DTD就是用来约束XML文档的，使其在一定的规范下使用。
+
+内部DTD文档
+<!DOCTYPE 根元素 [定义内容]>
+外部DTD文档
+<!DOCTYPE 根元素 SYSTEM "DTD文件路径">
+内外部DTD文档结合
+<!DOCTYPE 根元素 SYSTEM "DTD文件路径" [定义内容]>
+
+<!DOCTYPE 文档根结点 SYSTEM "DTD文件的URL">
+<!DOCTYPE 文档根结点 PUBLIC "DTD名称" "DTD文件的URL">
+
+DTD元素  基本语法 ：<!ELEMENT NAME CONTENT>
+解释：
+	ELEMENT：关键字(必须大写)。
+	NAME：元素名称。
+	CONTENT：元素类型，有四种，都必须大写。
+	    1、EMPTY－该元素不能包含子元素和文本，但可以有属性（空元素）
+	    2、ANY－该元素可以包含任何在DTD中定义的元素内容
+	    3、#PCDATA－可以包含任何字符数据，但是不能在其中包含任何子元素
+	    4、其它类型(组合)，可以是子元素，子元素与修饰符组合，基本元素与子元素与修饰符组合。
+			    <!ELEMENT 班级 (学生+,作者)>
+				<!ELEMENT 学生 (名字,年龄,介绍)>
+				<!ELEMENT 作者 (#PCDATA)>
+				<!ELEMENT 名字 (#PCDATA)>
+				<!ELEMENT 年龄 (#PCDATA)>
+				<!ELEMENT 介绍 (#PCDATA)>
+				
+DTD属性  基本语法<!ATTLIST 元素名称 
+						属性名称    类型    属性特性
+						属性名称    类型    属性特性…...
+						>
+解释：
+		ATTLIST：属性列表，（必须大写）。
+		元素名称：对应的元素的名称。
+		属性：属性能够有多个，其格式是名称 类型 属性特性
+		常用的有CDATA(字符型)，枚举(枚举格式是(值1|值2|值3...))，ID(ID不能重复，不能以数字开头)，
+		IDREF(引用另一个ID值)，IDREFS(可以引用多个ID值，以空格隔开)
+			1.CDATA 值为字符
+			2.ID 值为唯一
+			3.IDREF 值为另一个参考
+			4.ENTITY 值为一个实体
+			5.ENTITIES 值为实体列表.......
+		属性特性：
+			1.#REQUIRED 必须值
+			2.#IMPLIED 非必须值
+			3.FIXED value 固定值
+			4.值 默认值
+				<!ELEMENT 班级 (学生+,作者)>
+				<!ATTLIST 班级
+					班次 CDATA "1班"
+					编号 ID #REQUIRED
+				>
+				<!ELEMENT 学生 (名字,年龄,介绍)>
+				<!ELEMENT 作者 (#PCDATA)>
+				<!ATTLIST 学生
+					地址 CDATA #IMPLIED （非必须）
+					授课方式 CDATA #FIXED "面授"
+					学号 ID #REQUIRED
+					班级编号 IDREF #REQUIRED
+					朋友 IDREFS #IMPLIED
+				>
+				<!ELEMENT 名字 (#PCDATA)>
+				<!ELEMENT 年龄 (#PCDATA)>
+				<!ELEMENT 介绍 (#PCDATA)>
+
+实体	实体有引用实体和参数实体两种，引用实体一般是在XML使用，参数实体一般是在DTD中使用。
+基本语法：
+		<!ENTITY 实体名称 “实体内容” > // 引用实体
+		<!ENTITY % 实体名称 "实体内容" > // 参数实体
+解释：
+1、引用实体可以在引用了DTD的XML文件中，使用&实体名称;来使用实体内容。
+2、参数实体在DTD中使用，使用%实体名称;使用
+3、可以将那些重复使用的值定义成实体，这样能减少代码的冗余度。
+4、在外部DTD中，引用实体最好放在DTD底部，参数实体最好放在DTD顶部。
+				<!ENTITY % sex "男|女">
+				<!ELEMENT 班级 (学生+,作者)>
+				<!ELEMENT 学生 (名字,年龄,介绍)>
+				<!ELEMENT 作者 (#PCDATA)>
+				<!ATTLIST 学生
+					性别 (%sex;) #REQUIRED
+				>
+				<!ELEMENT 名字 (#PCDATA)>
+				<!ELEMENT 年龄 (#PCDATA)>
+				<!ELEMENT 介绍 (#PCDATA)>
+				<!ENTITY writer "Switch">
+				
+ -->
+ 
+ 
+<!ENTITY % sex "男|女">
+
+<!ELEMENT class (student+,teacher)>
+<!ATTLIST class
+	classroom CDATA "1班"
+	id ID #REQUIRED >
+	
+<!ELEMENT student (name,age,comment)>
+<!ATTLIST student
+	addr CDATA #IMPLIED
+	lesson CDATA #FIXED "面授"
+	studentID ID #REQUIRED
+	classID IDREF #REQUIRED
+	friend IDREFS #IMPLIED
+	sex (%sex;) #REQUIRED>
+	
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)> 
+<!ELEMENT comment (#PCDATA)>
+
+<!ELEMENT teacher (#PCDATA)>
+
+<!ENTITY writer "Switch">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

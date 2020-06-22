@@ -1,0 +1,8 @@
+Apache Commons Digester 一 （基础内容、核心API）
+https://www.cnblogs.com/chenpi/p/6930730.html
+
+Apache Commons Digester 二（规则模块绑定-RulesModule、异步解析-asyncParse、xml变量Substitutor、带参构造方法）
+https://www.cnblogs.com/chenpi/p/6947441.html
+
+Apache Commons Digester 三（规则注解）
+https://www.cnblogs.com/chenpi/p/6959691.html
